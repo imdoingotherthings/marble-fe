@@ -8,7 +8,7 @@ function Youtube () {
 
     useEffect(() => {
         async function getData () {
-            const response = await fetch('http://localhost:3060/youtube');
+            const response = await fetch('https://marble-api.herokuapp.com/youtube');
             const data = await response.json();
             setNewData(data.data['results'][1]['locations'][0]);
             setPicture(data.data['results'][1]['picture']);

@@ -8,7 +8,7 @@ function Amazon () {
 
     useEffect(() => {
         async function getData () {
-            const response = await fetch('http://localhost:3060/amazon');
+            const response = await fetch('https://marble-api.herokuapp.com/amazon');
             const data = await response.json();
             setNewData(data.data['results'][0]['locations'][0]);
             setPicture(data.data['results'][0]['picture']);
