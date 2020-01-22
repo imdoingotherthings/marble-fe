@@ -19,18 +19,18 @@ function Amazon () {
     }, []);
 
     return (
-        <div>
-            <Card>
+        <div className="d-flex justify-content-center">
+            <Card className="border-0">
                 <Card.Body>
-                    <Card.Title>Amazon</Card.Title>
-                    <hr className="w-25 d-flex"/>
                     { 
                         newData.length !== 0 ? (
                             <div>
-                                <h4>{name} - <span><img src={newData.icon} alt='' ></img></span></h4>
+                                <Card.Text>{name}</Card.Text>
                                 <a href={newData.url}>
-                                    <img src={picture} width="300" height="169" alt=''></img>
-                                </a> 
+                                    <img src={picture} className="img-fluid rounded" width="600" height="338" alt=''></img>
+                                </a>
+                                <br/>
+                                <img src={newData.icon} className="mt-3" alt='' ></img>
                             </div>
                         )
                         : null 
