@@ -1,5 +1,8 @@
 import React from 'react';
 import { Container, Card } from 'react-bootstrap';
+import Netflix from './containers/netflix/netflix';
+import Youtube from './containers/youtube/youtube';
+import Amazon from './containers/amazon/amazon';
 
 function App() {
   return (
@@ -7,7 +10,9 @@ function App() {
       <Container>
         <Card>
           <Card.Body>
-            <Card.Text>Hello</Card.Text>
+            <Netflix />
+            <Youtube />
+            <Amazon />
           </Card.Body>
         </Card>
       </Container>
