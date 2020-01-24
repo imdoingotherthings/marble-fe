@@ -27,6 +27,7 @@ function Youtube () {
             setViews(views);
             setTitle(data.data[1]['title']);
             setDescription(data.data[1]['meta_data'][0]);
+            console.log(videoURL);
         }
 
         getData();
@@ -44,33 +45,37 @@ function Youtube () {
                                     <img src={picture} className="img-fluid rounded" width="600" height="338" alt=''></img>
                                 </a> 
                                 <br/>
+                                <Card className="border-0">
+                                    <a href={newData.url} style={{ color: 'black' }}>
+                                        <Row>
+                                            <Col xs={12} md={12} lg={12} xl={7}>
+                                                <Card className="border-0">
+                                                    <Card.Body>
+                                                        <div className="embed-responsive embed-responsive-4by3">
+                                                            <iframe 
+                                                                width="640" 
+                                                                height="360" 
+                                                                src={`${trailer}?modestbranding=1`} 
+                                                                frameBorder="0" 
+                                                                allowFullScreen
+                                                            />
+                                                        </div>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                            <Col xs={12} md={12} lg={12} xl={5}>
+                                                <Card className="border-0">
+                                                    <Card.Body>
+                                                        <Card.Text className="font-weight-bold">{title}</Card.Text>
+                                                        <Card.Text>{views}</Card.Text>
+                                                        <Card.Text>{description}</Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                        </Row>
+                                    </a>
+                                </Card>
                                 <img src={newData.icon} className="mt-3" alt='' ></img>
-                                <Row>
-                                    <Col xs={12} md={6} lg={7}>
-                                        <Card>
-                                            <Card.Body>
-                                                <div className="embed-responsive embed-responsive-4by3">
-                                                    <iframe 
-                                                        width="640" 
-                                                        height="360" 
-                                                        src={trailer} 
-                                                        frameBorder="0" 
-                                                        allowFullScreen
-                                                    />
-                                                </div>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col xs={12} md={6} lg={5}>
-                                        <Card>
-                                            <Card.Body>
-                                                <Card.Text>{title}</Card.Text>
-                                                <Card.Text>{views}</Card.Text>
-                                                <Card.Text>{description}</Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                </Row>
                             </div>
                         )
                         : null 

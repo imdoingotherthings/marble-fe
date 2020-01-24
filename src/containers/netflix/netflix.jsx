@@ -19,7 +19,7 @@ function Netflix () {
             setPicture(data.data[0]['results'][0]['picture']);
             setName(data.data[0]['results'][0]['name']);
             setTrailer(videoURL);
-            setDescription(data.data[1]['description']);
+            setDescription(data.data[1]['description'].slice(0, 107));
             setSeasons(data.data[1]['seasons']);
             setYear(data.data[1]['year']);
         }
@@ -39,33 +39,37 @@ function Netflix () {
                                     <img src={picture} className="img-fluid rounded" width="600" height="338" alt=''></img>
                                 </a>
                                 <br/>
+                                <Card className="border-0">
+                                    <a href={newData.url} style={{ color: 'black' }}>
+                                        <Row>
+                                            <Col xs={12} md={12} lg={12} xl={7}>
+                                                <Card className="border-0">
+                                                    <Card.Body>
+                                                        <div className="embed-responsive embed-responsive-4by3">
+                                                            <iframe 
+                                                                width="640" 
+                                                                height="360" 
+                                                                src={trailer} 
+                                                                frameBorder="0" 
+                                                                allowFullScreen
+                                                            />
+                                                        </div>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                            <Col xs={12} md={12} lg={12} xl={5}>
+                                                <Card className="border-0">
+                                                    <Card.Body>
+                                                        <Card.Text className="font-weight-bold">{name}</Card.Text>
+                                                        <Card.Text>{seasons} - {year}</Card.Text>
+                                                        <Card.Text>{description} ...</Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
+                                        </Row>
+                                    </a>
+                                </Card>
                                 <img src={newData.icon} className="mt-3" alt='' ></img>
-                                <Row>
-                                    <Col xs={12} md={6} lg={7}>
-                                        <Card>
-                                            <Card.Body>
-                                                <div className="embed-responsive embed-responsive-4by3">
-                                                    <iframe 
-                                                        width="640" 
-                                                        height="360" 
-                                                        src={trailer} 
-                                                        frameBorder="0" 
-                                                        allowFullScreen
-                                                    />
-                                                </div>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                    <Col xs={12} md={6} lg={5}>
-                                        <Card>
-                                            <Card.Body>
-                                                <Card.Text>{name}</Card.Text>
-                                                <Card.Text>{seasons} {year}</Card.Text>
-                                                <Card.Text>{description}</Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                </Row>
                             </div>
                         )
                         : null 
