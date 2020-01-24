@@ -12,7 +12,8 @@ function Netflix () {
 
     useEffect(() => {
         async function getData () {
-            const response = await fetch('http://localhost:3060/netflix');
+            const response = await fetch('https://marble-api.herokuapp.com/netflix');
+            // const response = await fetch('http://localhost:3060/netflix');
             const data = await response.json();
             const videoURL = data.data[2]['video'].replace('watch?v=', 'embed/');
             setNewData(data.data[0]['results'][0]['locations'][0]);

@@ -11,8 +11,8 @@ function Amazon () {
 
     useEffect(() => {
         async function getData () {
-            // const response = await fetch('https://marble-api.herokuapp.com/amazon');
-            const response = await fetch('http://localhost:3060/amazon');
+            const response = await fetch('https://marble-api.herokuapp.com/amazon');
+            // const response = await fetch('http://localhost:3060/amazon');
             const data = await response.json();
             const videoURL = data.data[2]['video'].replace('watch?v=', 'embed/');
             setNewData(data.data[0]['results'][0]['locations'][0]);

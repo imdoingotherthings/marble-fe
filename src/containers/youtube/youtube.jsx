@@ -12,8 +12,8 @@ function Youtube () {
 
     useEffect(() => {
         async function getData () {
-            // const response = await fetch('https://marble-api.herokuapp.com/youtube');
-            const response = await fetch('http://localhost:3060/youtube');
+            const response = await fetch('https://marble-api.herokuapp.com/youtube');
+            // const response = await fetch('http://localhost:3060/youtube');
             const data = await response.json();
             const videoURL = data.data[2]['video'].replace('watch?v=', 'embed/');
             let baseData = data.data[1]['description'].split(' ');
