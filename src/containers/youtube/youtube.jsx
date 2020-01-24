@@ -1,18 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 
 function Youtube () {
     const [newData, setNewData] = useState([]);
     const [picture, setPicture] = useState('');
     const [name, setName] = useState('');
+    const [trailer, setTrailer] = useState('');
+    const [views, setViews] = useState('');
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
 
     useEffect(() => {
         async function getData () {
-            const response = await fetch('https://marble-api.herokuapp.com/youtube');
+            // const response = await fetch('https://marble-api.herokuapp.com/youtube');
+            const response = await fetch('http://localhost:3060/youtube');
             const data = await response.json();
-            setNewData(data.data['results'][1]['locations'][0]);
-            setPicture(data.data['results'][1]['picture']);
-            setName(data.data['results'][1]['name']);
+            const videoURL = data.data[2]['video'].replace('watch?v=', 'embed/');
+            let baseData = data.data[1]['description'].split(' ');
+            let secondLast = baseData[baseData.length -2];
+            let last = baseData[baseData.length -1];
+            let views = secondLast.concat(` ${last}`);
+            setNewData(data.data[0]['results'][1]['locations'][0]);
+            setPicture(data.data[0]['results'][1]['picture']);
+            setName(data.data[0]['results'][1]['name']);
+            setTrailer(videoURL);
+            setViews(views);
+            setTitle(data.data[1]['title']);
+            setDescription(data.data[1]['meta_data'][0]);
         }
 
         getData();
@@ -31,6 +45,32 @@ function Youtube () {
                                 </a> 
                                 <br/>
                                 <img src={newData.icon} className="mt-3" alt='' ></img>
+                                <Row>
+                                    <Col xs={12} md={6} lg={7}>
+                                        <Card>
+                                            <Card.Body>
+                                                <div className="embed-responsive embed-responsive-4by3">
+                                                    <iframe 
+                                                        width="640" 
+                                                        height="360" 
+                                                        src={trailer} 
+                                                        frameBorder="0" 
+                                                        allowFullScreen
+                                                    />
+                                                </div>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col xs={12} md={6} lg={5}>
+                                        <Card>
+                                            <Card.Body>
+                                                <Card.Text>{title}</Card.Text>
+                                                <Card.Text>{views}</Card.Text>
+                                                <Card.Text>{description}</Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                </Row>
                             </div>
                         )
                         : null 
