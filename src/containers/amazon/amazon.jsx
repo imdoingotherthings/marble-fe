@@ -33,24 +33,27 @@ function Amazon () {
                     { 
                         newData.length !== 0 ? (
                             <div>
-                                <Card.Text><a href={newData.url} style={{ color: 'black' }}>{name}</a></Card.Text>
+                                <Card.Text><a href={newData.url} class="text-decoration-none" style={{ color: 'black' }}>{name}</a></Card.Text>
                                 <a href={newData.url}>
                                     <img src={picture} className="img-fluid rounded" width="600" height="338" alt=''></img>
                                 </a>
-                                <br/>
-                                <Card className="border-0">
-                                    <a href={newData.url} style={{ color: 'black' }}>
+                                <br />
+                                <hr />
+                                <Card className="my-3">
+                                    <a href={newData.url} class="text-decoration-none" style={{ color: 'black' }}>
                                         <Row>
                                             <Col xs={12} md={12} lg={12} xl={7}>
                                                 <Card className="border-0">
                                                     <Card.Body>
                                                         <div className="embed-responsive embed-responsive-4by3">
-                                                            <iframe 
+                                                            <iframe
+                                                                title="amazon prime video"
                                                                 width="640" 
                                                                 height="360" 
-                                                                src={trailer} 
+                                                                src={`${trailer}?modestbranding=1`}
                                                                 frameBorder="0" 
                                                                 allowFullScreen
+                                                                className="rounded"
                                                             />
                                                         </div>
                                                     </Card.Body>
@@ -60,7 +63,7 @@ function Amazon () {
                                                 <Card className="border-0">
                                                     <Card.Body>
                                                         <Card.Text className="font-weight-bold">{name}</Card.Text>
-                                                        <Card.Text>{rating}</Card.Text>
+                                                        <Card.Text style={{ fontSize: '13px' }}>{rating}</Card.Text>
                                                         <Card.Text>{description} ...</Card.Text>
                                                     </Card.Body>
                                                 </Card>
