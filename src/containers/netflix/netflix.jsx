@@ -35,7 +35,7 @@ function Netflix () {
                     { 
                         newData.length !== 0 ? (
                             <div>
-                                <Card.Text><a style={{ color: 'black' }}>{name}</a></Card.Text>
+                                <Card.Text><a href={newData.url} style={{ color: 'black' }}>{name}</a></Card.Text>
                                 <a href={newData.url}>
                                     <img src={picture} className="img-fluid rounded" width="600" height="338" alt=''></img>
                                 </a>
